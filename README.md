@@ -23,6 +23,8 @@ Simplest way is to just create a .NET 4.5 Console Application in C#
 5. Open `MQTT FX` and set port to be `4502` (if you did not change this in XSockets to be something else)
         
         //Add this class in the project if you want port 1883 instead
+        //Note that you can add as many configuration classes as you like to get more endpoints.
+        using XSockets.Core.Configuration;
         public class MqttConfig : ConfigurationSetting
         {
             public MqttConfig():base("ws://localhost:1883"){}
