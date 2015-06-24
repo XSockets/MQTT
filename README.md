@@ -3,7 +3,7 @@ A MQTT protocol plugin for XSockets based on [Paolo Patierno](https://twitter.co
 
 ##Test MQTT in XSockets.NET
 
-NOTE: Currently release on [nuget](https://www.nuget.org/packages/XSockets/5.0.0-beta3) as a pre-release
+NOTE: Currently release on [nuget](https://www.nuget.org/packages/XSockets/5.0.0-beta4) as a pre-release
 
 Simplest way is to just create a .NET 4.5 Console Application in C#
 
@@ -21,6 +21,13 @@ Simplest way is to just create a .NET 4.5 Console Application in C#
         
 4. Download [MQTT FX](http://mqttfx.jfx4ee.org/index.php/download)
 5. Open `MQTT FX` and set port to be `4502` (if you did not change this in XSockets to be something else)
+        
+        //Add this class in the project if you want port 1883 instead
+        public class MqttConfig : ConfigurationSetting
+        {
+            public MqttConfig():base("ws://localhost:1883"){}
+        }
+        
 6. Connect and test MQTT
 
 ## About The Implementation
