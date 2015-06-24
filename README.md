@@ -12,7 +12,8 @@ Simplest way is to just create a .NET 4.5 Console Application in C#
 3. Add start start up code for the XSockets server
         
         //using XSockets.Core.Common.Socket;
-        using (var container = XSockets.Plugin.Framework.Composable.GetExport<IXSocketServerContainer>())
+        //using XSockets.Plugin.Framework;
+        using (var container = Composable.GetExport<IXSocketServerContainer>())
         {
             container.Start();
             Console.ReadLine();
