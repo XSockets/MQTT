@@ -10,14 +10,14 @@ Simplest way is to just create a .NET 4.5 Console Application in C#
 1. Create a new Console Application in C# .NET 4.5
 2. Install-Package XSockets -pre
 3. Add start start up code for the XSockets server
-    
-    //using XSockets.Core.Common.Socket;
-    using (var container = XSockets.Plugin.Framework.Composable.GetExport<IXSocketServerContainer>())
-    {
-        container.Start();
-        Console.ReadLine();
-    }
-    
+        
+        //using XSockets.Core.Common.Socket;
+        using (var container = XSockets.Plugin.Framework.Composable.GetExport<IXSocketServerContainer>())
+        {
+            container.Start();
+            Console.ReadLine();
+        }
+        
 4. Download [MQTT FX](http://mqttfx.jfx4ee.org/index.php/download)
 5. Open MQTT FX and set port to be 4502 (if you did not change this in XSockets to be something else)
 6. Connect and test MQTT
