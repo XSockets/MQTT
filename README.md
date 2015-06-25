@@ -46,6 +46,8 @@ The XSockets plugins created are found under the `Modules`folder:
   
  
 ## Anything To MQTT
+**NOTE: This feature is not yet published to Nuget**  
+
 Since you can connect anyhting that has TCP/IP to XSockets you can send a message to the MQTT clients from anything that has TCP/IP.
 
 Below is a simple controller `Foo` that will accept any message to the method `Bar` and send that message to all subscribing MQTT clients.
