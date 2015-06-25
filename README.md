@@ -36,8 +36,8 @@ Simplest way is to just create a .NET 4.5 Console Application in C#
 The goal was to leave Paolo's implementation as intact as possible. So under source you can see a `GnatMQ` folder, that folder contains the code from GnatMQ at CodePlex. 
 
 The only changes made was:
- - A few methods on the `MqttClient` was made Internal instead of `Private`
- - `MqttMsgConnect` class was made partial
+ - Added a static `Parse` method to the `MqttMsgConnect` class
+ - The `OnMqttMsgConnected` is currently made internal instead of private. Hopefulle we can get back to private here in the end.
  
 The XSockets plugins created are found under the `Modules`folder:
  - `MqttController`is the XSockets controller that will receive Mqtt messages. This module has a MqttClient instance
