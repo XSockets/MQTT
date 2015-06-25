@@ -67,6 +67,7 @@ Below is a simple controller `Foo` that will accept any message to the method `B
     }
     
 ###To Test This...
+First of all add the sample class `Foo` from above to your XSockets sample project.
 
 1. Start XSockets server
 2. Connect a MQTT client (MQTT FX)
