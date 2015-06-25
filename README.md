@@ -45,3 +45,33 @@ The XSockets plugins created are found under the `Modules`folder:
  - `MqttProtocol` the custom protocol that make sure that the MQTT clients will use the MQTT logic
   
  
+## Anything To MQTT
+Since you can connect anyhting that has TCP/IP to XSockets you can send a message to the MQTT clients from anything that has TCP/IP.
+
+Below is a simple controller `Foo` that will accept any message to the method `Bar` and send that message to all subscribing MQTT clients.
+    
+    public class Foo : XSocketController
+    {        
+        public void Bar(IMessage message)
+        {
+            //Send to all clients MQTT excluded
+            this.InvokeToAll(message);
+            //Send to all MQTT clients, still just a POC, so it is kind of hacky
+            foreach (var c in this.FindOn<MqttController>())
+            {
+                c.MqttClient.Publish(message.Topic,Encoding.UTF8.GetBytes(message.Data));
+            }            
+        }
+    }
+    
+###To Test This...
+
+1. Start XSockets server
+2. Connect a MQTT client (MQTT FX)
+3. Subscribe to `bar`
+4. Open up Putty
+5. Connect to the server (probably localhost and port 4502). Remember to choose `Raw` as connection type
+6. Type in `PuttyProtocol` in putty and hit enter
+7. Then type `foo|bar|Hello from putty` and hit enter
+
+Your MQTT client should now get the message `Hello from putty` on the topic `bar` 
