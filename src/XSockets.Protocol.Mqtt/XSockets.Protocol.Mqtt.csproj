@@ -93,6 +93,7 @@
     <Compile Include="Modules\Controller\MqttController.cs" />
     <Compile Include="Modules\Controller\MqttManager.cs" />
     <Compile Include="Modules\Protocol\MqttProtocol.cs" />
+    <Compile Include="Modules\Protocol\MqttProtocolProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

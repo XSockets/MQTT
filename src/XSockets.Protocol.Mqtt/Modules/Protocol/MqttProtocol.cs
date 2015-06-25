@@ -1,19 +1,17 @@
-﻿
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Sockets;
-using uPLibrary.Networking.M2Mqtt;
-using uPLibrary.Networking.M2Mqtt.Messages;
-using XSockets.Core.Common.Protocol;
-using XSockets.Core.Common.Utility.Logging;
-using XSockets.Plugin.Framework;
-using XSockets.Plugin.Framework.Attributes;
-using XSockets.Protocol.Mqtt.Modules.Controller;
-
-namespace XSockets.Protocol.Mqtt.Modules.Protocol
+﻿namespace XSockets.Protocol.Mqtt.Modules.Protocol
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net.Sockets;
+    using uPLibrary.Networking.M2Mqtt;
+    using uPLibrary.Networking.M2Mqtt.Messages;
+    using Core.Common.Protocol;
+    using Core.Common.Utility.Logging;
+    using Plugin.Framework;
+    using Plugin.Framework.Attributes;
+    using Controller;
+
     /// <summary>
     /// This MQTT implementation is based on the work of 
     /// </summary>
@@ -87,7 +85,8 @@ namespace XSockets.Protocol.Mqtt.Modules.Protocol
             try
             {
                 var connectMessage = MqttMsgConnect.ParseHandshake(RawHandshake[0], (byte)MqttProtocolVersion.Version_3_1_1, this);                
-                Broker.MqttOpen(connectMessage);                               
+                Broker.MqttOpen(connectMessage);
+                Broker.Open();                          
                 return new byte[0]; 
             }
             catch (Exception ex)
@@ -111,7 +110,8 @@ namespace XSockets.Protocol.Mqtt.Modules.Protocol
             {
                 ProtocolInstance = this,                
             };
-            Controllers.AddOrUpdate(Broker.Alias, Broker);
+            ProtocolProxy = new MqttProtocolProxy();
+            //Controllers.AddOrUpdate(Broker.Alias, Broker);
         }        
     }
 }
