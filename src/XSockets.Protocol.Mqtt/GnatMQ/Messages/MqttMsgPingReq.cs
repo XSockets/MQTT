@@ -66,7 +66,7 @@ namespace uPLibrary.Networking.M2Mqtt.Messages
 
             // already know remaininglength is zero (MQTT specification),
             // so it isn't necessary to read other data from socket
-            int remainingLength = decodeRemainingLength(channel);
+            int remainingLength = MqttMsgBase.decodeRemainingLength(channel);
 
             return msg;
         }

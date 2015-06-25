@@ -18,15 +18,14 @@ Contributors:
 #if (MF_FRAMEWORK_VERSION_V4_2 || MF_FRAMEWORK_VERSION_V4_3)
 using Microsoft.SPOT.Net.Security;
 #else
-using System.Net;
 using System.Net.Security;
 using System.Security.Authentication;
 #endif
 #endif
-using System;
-using System.Net;
 using System.Net.Sockets;
+using System.Net;
 using System.Security.Cryptography.X509Certificates;
+using System;
 
 namespace uPLibrary.Networking.M2Mqtt
 {
@@ -208,12 +207,12 @@ namespace uPLibrary.Networking.M2Mqtt
                     SslVerification.CertificateRequired,
                     SslProtocols.TLSv1);
 #else
-                this.sslStream.AuthenticateAsClient(
-                  this.remoteHostName,
-                  null,
-                  SslProtocols.Tls,
-                  false);
-
+                      this.sslStream.AuthenticateAsClient(
+                        this.remoteHostName,
+                        null,
+                        SslProtocols.Tls,
+                        false);
+                
 #endif
             }
 #endif

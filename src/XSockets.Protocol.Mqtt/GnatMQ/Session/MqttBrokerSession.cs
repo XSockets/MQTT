@@ -15,6 +15,7 @@ Contributors:
 */
 
 #if BROKER
+using System.Collections;
 using System.Collections.Generic;
 using uPLibrary.Networking.M2Mqtt.Managers;
 using uPLibrary.Networking.M2Mqtt.Messages;

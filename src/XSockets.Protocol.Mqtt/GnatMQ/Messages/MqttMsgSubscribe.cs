@@ -14,13 +14,14 @@ Contributors:
    Paolo Patierno - initial API and implementation and/or initial documentation
 */
 
-// if NOT .Net Micro Framework
 using System;
-using System.Text;
-using uPLibrary.Networking.M2Mqtt.Exceptions;
+// if NOT .Net Micro Framework
 #if (!MF_FRAMEWORK_VERSION_V4_2 && !MF_FRAMEWORK_VERSION_V4_3)
 using System.Collections.Generic;
 #endif
+using System.Collections;
+using System.Text;
+using uPLibrary.Networking.M2Mqtt.Exceptions;
 
 namespace uPLibrary.Networking.M2Mqtt.Messages
 {
@@ -103,7 +104,7 @@ namespace uPLibrary.Networking.M2Mqtt.Messages
             }
 
             // get remaining length and allocate buffer
-            int remainingLength = decodeRemainingLength(channel);
+            int remainingLength = MqttMsgBase.decodeRemainingLength(channel);
             buffer = new byte[remainingLength];
 
             // read bytes from socket...

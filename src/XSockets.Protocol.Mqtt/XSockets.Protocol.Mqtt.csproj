@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GnatMQExtended\MqttMsgConnect.cs" />
     <Compile Include="GnatMQ\Communication\IMqttCommunicationLayer.cs" />
     <Compile Include="GnatMQ\Communication\MqttClientConnectedEventArgs.cs" />
     <Compile Include="GnatMQ\Exceptions\MqttClientException.cs" />

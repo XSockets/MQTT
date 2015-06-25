@@ -14,6 +14,7 @@ Contributors:
    Paolo Patierno - initial API and implementation and/or initial documentation
 */
 
+using System;
 using System.Collections;
 
 namespace uPLibrary.Networking.M2Mqtt.Utility

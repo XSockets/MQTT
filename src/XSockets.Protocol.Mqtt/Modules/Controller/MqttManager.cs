@@ -140,6 +140,7 @@ namespace XSockets.Protocol.Mqtt.Modules.Controller
 
             // add client to the collection
             this.clients.Add(client);
+            //TODO: Avoid calling this... But how do I get the MqttMsgConnect into the receive thred of the MqttClient?
             client.OnMqttMsgConnected((MqttMsgConnect)msg);
             // start client threads
             client.Open();

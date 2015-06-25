@@ -39,7 +39,7 @@ namespace uPLibrary.Networking.M2Mqtt
 
         // reference to publisher manager
         private MqttPublisherManager publisherManager;
-
+        
         // reference to subscriber manager
         private MqttSubscriberManager subscriberManager;
 
@@ -68,7 +68,7 @@ namespace uPLibrary.Networking.M2Mqtt
             : this(new MqttTcpCommunicationLayer(MqttSettings.Instance.Port), MqttSettings.Instance)
         {
         }
-
+        
         /// <summary>
         /// Constructor
         /// </summary>
@@ -90,6 +90,7 @@ namespace uPLibrary.Networking.M2Mqtt
             this.uacManager = new MqttUacManager();
 
             this.clients = new MqttClientCollection();
+
         }
 
         /// <summary>
@@ -106,7 +107,7 @@ namespace uPLibrary.Networking.M2Mqtt
         /// </summary>
         public void Stop()
         {
-            this.commLayer.Stop();
+            //this.commLayer.Stop();
             this.publisherManager.Stop();
 
             // close connection with all clients
@@ -184,7 +185,7 @@ namespace uPLibrary.Networking.M2Mqtt
             // [v3.1.1] DUP flag from an incoming PUBLISH message is not propagated to subscribers
             //          It should be set in the outgoing PUBLISH message based on transmission for each subscriber
             MqttMsgPublish publish = new MqttMsgPublish(e.Topic, e.Message, false, e.QosLevel, e.Retain);
-
+            
             // publish message through publisher manager
             this.publisherManager.Publish(publish);
         }
@@ -376,7 +377,7 @@ namespace uPLibrary.Networking.M2Mqtt
             else
             {
                 // client id length exceeded (only for old MQTT 3.1)
-                if ((connect.ProtocolVersion == MqttMsgConnect.PROTOCOL_VERSION_V3_1) &&
+                if  ((connect.ProtocolVersion == MqttMsgConnect.PROTOCOL_VERSION_V3_1) &&
                      (connect.ClientId.Length > MqttMsgConnect.CLIENT_ID_MAX_LENGTH))
                     returnCode = MqttMsgConnack.CONN_REFUSED_IDENT_REJECTED;
                 else

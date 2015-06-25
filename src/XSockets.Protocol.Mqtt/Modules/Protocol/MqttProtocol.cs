@@ -84,7 +84,7 @@
         {
             try
             {
-                var connectMessage = MqttMsgConnect.ParseHandshake(RawHandshake[0], (byte)MqttProtocolVersion.Version_3_1_1, this);                
+                var connectMessage = MqttMsgConnect.Parse((byte)MqttProtocolVersion.Version_3_1_1, this.RawHandshake);                
                 Broker.MqttOpen(connectMessage);
                 Broker.Open();                          
                 return new byte[0]; 
