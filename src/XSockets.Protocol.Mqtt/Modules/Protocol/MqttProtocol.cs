@@ -1,5 +1,8 @@
-﻿namespace XSockets.Protocol.Mqtt.Modules.Protocol
+﻿
+
+namespace XSockets.Protocol.Mqtt.Modules.Protocol
 {
+    using Core.Common.Socket.Event.Interface;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -19,6 +22,14 @@
     public class MqttProtocol : XSocketProtocol, IMqttNetworkChannel
     {
         #region IMqttNetworkChannel
+
+        // mask, offset and size for fixed header fields
+        internal const byte MSG_TYPE_MASK = 0xF0;
+        internal const byte MSG_TYPE_OFFSET = 0x04;
+
+        // MQTT message types
+        internal const byte MQTT_MSG_CONNECT_TYPE = 0x01;
+
         public bool DataAvailable
         {
             get { return Socket.Socket.Available > 0; }
@@ -75,7 +86,7 @@
         public override bool Match(IList<byte> handshake)
         {
             if (!handshake.Any()) return false;
-            return ((handshake[0] & MqttMsgBase.MSG_TYPE_MASK) >> MqttMsgBase.MSG_TYPE_OFFSET) == MqttMsgBase.MQTT_MSG_CONNECT_TYPE;
+            return ((handshake[0] & MSG_TYPE_MASK) >> MSG_TYPE_OFFSET) == MQTT_MSG_CONNECT_TYPE;
         }
 
 
@@ -112,6 +123,15 @@
             };
             ProtocolProxy = new MqttProtocolProxy();
             //Controllers.AddOrUpdate(Broker.Alias, Broker);
-        }        
+        }
+
+        public override byte[] OnOutgoingFrame(IMessage message)
+        {
+            var frame = this.ProtocolProxy.Out(message);
+            if (frame == null)
+                return frame;
+
+            return new MqttMsgPublish(message.Topic, frame).GetBytes((byte)MqttProtocolVersion.Version_3_1_1);
+        }
     }
 }

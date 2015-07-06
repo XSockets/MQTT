@@ -21,6 +21,12 @@ namespace XSockets.Protocol.Mqtt.Modules.Controller
     [XSocketMetadata("mqttmanager", PluginRange.Internal)]
     public class MqttManager : XSocketController
     {
+        internal const byte PROTOCOL_VERSION_V3_1 = 0x03;
+        internal const byte PROTOCOL_VERSION_V3_1_1 = 0x04; // [v.3.1.1]
+
+        // max length for client id (removed in 3.1.1)
+        internal const int CLIENT_ID_MAX_LENGTH = 23;
+
         // MQTT broker settings
         private MqttSettings settings;
 
@@ -140,15 +146,20 @@ namespace XSockets.Protocol.Mqtt.Modules.Controller
 
             // add client to the collection
             this.clients.Add(client);
+            
             //TODO: Avoid calling this... But how do I get the MqttMsgConnect into the receive thred of the MqttClient?
-            client.OnMqttMsgConnected((MqttMsgConnect)msg);
+            //client.OnMqttMsgConnected((MqttMsgConnect)msg);
+            //Calling this way instead....
+            client.ProtocolVersion = (MqttProtocolVersion)msg.ProtocolVersion;
+            this.Client_MqttMsgConnected(client, new MqttMsgConnectEventArgs(msg));
+            
             // start client threads
             client.Open();
         }
 
         void Client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
-            MqttClient client = (MqttClient)sender;
+            //MqttClient client = (MqttClient)sender;
 
             // create PUBLISH message to publish
             // [v3.1.1] DUP flag from an incoming PUBLISH message is not propagated to subscribers
@@ -340,14 +351,14 @@ namespace XSockets.Protocol.Mqtt.Modules.Controller
             byte returnCode = MqttMsgConnack.CONN_ACCEPTED;
 
             // unacceptable protocol version
-            if ((connect.ProtocolVersion != MqttMsgConnect.PROTOCOL_VERSION_V3_1) &&
-                (connect.ProtocolVersion != MqttMsgConnect.PROTOCOL_VERSION_V3_1_1))
+            if ((connect.ProtocolVersion != PROTOCOL_VERSION_V3_1) &&
+                (connect.ProtocolVersion != PROTOCOL_VERSION_V3_1_1))
                 returnCode = MqttMsgConnack.CONN_REFUSED_PROT_VERS;
             else
             {
                 // client id length exceeded (only for old MQTT 3.1)
-                if ((connect.ProtocolVersion == MqttMsgConnect.PROTOCOL_VERSION_V3_1) &&
-                     (connect.ClientId.Length > MqttMsgConnect.CLIENT_ID_MAX_LENGTH))
+                if ((connect.ProtocolVersion == PROTOCOL_VERSION_V3_1) &&
+                     (connect.ClientId.Length > CLIENT_ID_MAX_LENGTH))
                     returnCode = MqttMsgConnack.CONN_REFUSED_IDENT_REJECTED;
                 else
                 {
