@@ -1,5 +1,7 @@
 ﻿
 
+using XSockets.Protocol.Mqtt.Modules.Extensions;
+
 namespace XSockets.Protocol.Mqtt.Modules.Protocol
 {
     using Core.Common.Socket.Event.Interface;
@@ -95,7 +97,8 @@ namespace XSockets.Protocol.Mqtt.Modules.Protocol
         {
             try
             {
-                var connectMessage = MqttMsgConnect.Parse((byte)MqttProtocolVersion.Version_3_1_1, this.RawHandshake);                
+                var connectMessage = MqttHelpers.Parse((byte) MqttProtocolVersion.Version_3_1_1, this.RawHandshake);
+                //var connectMessage = MqttMsgConnect.Parse((byte)MqttProtocolVersion.Version_3_1_1, this.RawHandshake);                
                 Broker.MqttOpen(connectMessage);
                 Broker.Open();                          
                 return new byte[0]; 
