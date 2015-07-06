@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{553FDCDE-FE02-4DAE-95F1-083B5360FE53}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XSockets.Protocol.Mqtt</RootNamespace>
+    <AssemblyName>XSockets.Protocol.Mqtt</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BROKER, SSL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;BROKER, SSL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GnatMQ\Communication\IMqttCommunicationLayer.cs" />
+    <Compile Include="GnatMQ\Communication\MqttClientConnectedEventArgs.cs" />
+    <Compile Include="GnatMQ\Exceptions\MqttClientException.cs" />
+    <Compile Include="GnatMQ\Exceptions\MqttCommunicationException.cs" />
+    <Compile Include="GnatMQ\Exceptions\MqttConnectionException.cs" />
+    <Compile Include="GnatMQ\Exceptions\MqttTimeoutException.cs" />
+    <Compile Include="GnatMQ\IMqttNetworkChannel.cs" />
+    <Compile Include="GnatMQ\Internal\InternalEvent.cs" />
+    <Compile Include="GnatMQ\Internal\MsgInternalEvent.cs" />
+    <Compile Include="GnatMQ\Internal\MsgPublishedInternalEvent.cs" />
+    <Compile Include="GnatMQ\Managers\MqttPublisherManager.cs" />
+    <Compile Include="GnatMQ\Managers\MqttSessionManager.cs" />
+    <Compile Include="GnatMQ\Managers\MqttSubscriberManager.cs" />
+    <Compile Include="GnatMQ\Managers\MqttUacManager.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgBase.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgConnack.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgConnect.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgConnectEventArgs.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgContext.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgDisconnect.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgPingReq.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgPingResp.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgPuback.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgPubcomp.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgPublish.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgPublishedEventArgs.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgPublishEventArgs.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgPubrec.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgPubrel.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgSuback.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgSubscribe.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgSubscribedEventArgs.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgSubscribeEventArgs.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgUnsuback.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgUnsubscribe.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgUnsubscribedEventArgs.cs" />
+    <Compile Include="GnatMQ\Messages\MqttMsgUnsubscribeEventArgs.cs" />
+    <Compile Include="GnatMQ\MqttBroker.cs" />
+    <Compile Include="GnatMQ\MqttClient.cs" />
+    <Compile Include="GnatMQ\MqttClientCollection.cs" />
+    <Compile Include="GnatMQ\MqttSettings.cs" />
+    <Compile Include="GnatMQ\Net\Fx.cs" />
+    <Compile Include="GnatMQ\Net\MqttNetworkChannel.cs" />
+    <Compile Include="GnatMQ\Net\MqttTcpCommunicationLayer.cs" />
+    <Compile Include="GnatMQ\Session\MqttBrokerSession.cs" />
+    <Compile Include="GnatMQ\Session\MqttClientSession.cs" />
+    <Compile Include="GnatMQ\Session\MqttSession.cs" />
+    <Compile Include="GnatMQ\Utility\QueueExtension.cs" />
+    <Compile Include="GnatMQ\Utility\Trace.cs" />
+    <Compile Include="Modules\Controller\MqttController.cs" />
+    <Compile Include="Modules\Controller\MqttManager.cs" />
+    <Compile Include="Modules\Extensions\MqttHelpers.cs" />
+    <Compile Include="Modules\Protocol\MqttProtocol.cs" />
+    <Compile Include="Modules\Protocol\MqttProtocolProxy.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XSockets.Core.Common\XSockets.Core.Common.csproj">
+      <Project>{359d2c11-6d8f-4ace-807b-5d7af9d79faa}</Project>
+      <Name>XSockets.Core.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XSockets.Core\XSockets.Core.csproj">
+      <Project>{8294e0fa-2b2f-416c-b333-21838123dc3d}</Project>
+      <Name>XSockets.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XSockets.Plugin.Framework\XSockets.Plugin.Framework.csproj">
+      <Project>{80ecbd60-13c1-415c-8db2-57d7f211f78a}</Project>
+      <Name>XSockets.Plugin.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XSockets.Protocol\XSockets.Protocol.csproj">
+      <Project>{c8d2fe64-0089-4bb3-9973-2451e858827b}</Project>
+      <Name>XSockets.Protocol</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
