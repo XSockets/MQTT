@@ -1,0 +1,16 @@
+C:\Users\Uffe\Desktop\XSockets.Protocol.Mqtt\XSockets.Protocol.Mqtt\bin\Debug\XSockets.Protocol.Mqtt.dll
+C:\Users\Uffe\Desktop\XSockets.Protocol.Mqtt\XSockets.Protocol.Mqtt\bin\Debug\XSockets.Protocol.Mqtt.pdb
+C:\Users\Uffe\Desktop\XSockets.Protocol.Mqtt\XSockets.Protocol.Mqtt\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Uffe\Desktop\XSockets.Protocol.Mqtt\XSockets.Protocol.Mqtt\bin\Debug\XSockets.Core.Common.dll
+C:\Users\Uffe\Desktop\XSockets.Protocol.Mqtt\XSockets.Protocol.Mqtt\bin\Debug\XSockets.Core.dll
+C:\Users\Uffe\Desktop\XSockets.Protocol.Mqtt\XSockets.Protocol.Mqtt\bin\Debug\XSockets.Enterprise.dll
+C:\Users\Uffe\Desktop\XSockets.Protocol.Mqtt\XSockets.Protocol.Mqtt\bin\Debug\XSockets.Plugin.Framework.dll
+C:\Users\Uffe\Desktop\XSockets.Protocol.Mqtt\XSockets.Protocol.Mqtt\bin\Debug\XSockets.Protocol.dll
+C:\Users\Uffe\Desktop\XSockets.Protocol.Mqtt\XSockets.Protocol.Mqtt\bin\Debug\XSockets.Protocol.Json.dll
+C:\Users\Uffe\Desktop\XSockets.Protocol.Mqtt\XSockets.Protocol.Mqtt\bin\Debug\XSockets.Protocol.Putty.dll
+C:\Users\Uffe\Desktop\XSockets.Protocol.Mqtt\XSockets.Protocol.Mqtt\bin\Debug\XSockets.Protocol.Rfc6455.dll
+C:\Users\Uffe\Desktop\XSockets.Protocol.Mqtt\XSockets.Protocol.Mqtt\bin\Debug\XSockets.Serialization.dll
+C:\Users\Uffe\Desktop\XSockets.Protocol.Mqtt\XSockets.Protocol.Mqtt\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Uffe\Desktop\XSockets.Protocol.Mqtt\XSockets.Protocol.Mqtt\obj\Debug\XSockets.Protocol.Mqtt.csprojResolveAssemblyReference.cache
+C:\Users\Uffe\Desktop\XSockets.Protocol.Mqtt\XSockets.Protocol.Mqtt\obj\Debug\XSockets.Protocol.Mqtt.dll
+C:\Users\Uffe\Desktop\XSockets.Protocol.Mqtt\XSockets.Protocol.Mqtt\obj\Debug\XSockets.Protocol.Mqtt.pdb
